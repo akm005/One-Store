@@ -15,7 +15,7 @@ export default class Displaysearchitem extends Component {
         <div className='item-box'>
             <div className='handle'>
               <div className='item-element'>
-                <ItemSearchPreviewGrid data={this.props.data} />
+                <ItemSearchPreviewGrid data={this.props.data} tooggleFav={this.props.tooggleFav} />
               </div>
             </div>
             
