@@ -17,7 +17,7 @@ export default class ItemSearchPreviewGrid extends Component {
       {this.props.data.map(res => 
       <div className='itemview-grid' key={res.sku}>
         <div className='offer-indicator --visible'><span>50%</span></div>
-        <EyeWish key= {res.sku} heartclick={this.heartclick}/>
+        <EyeWish product={res} heartclick={this.heartclick} tooggleFav={this.props.tooggleFav}/>
         <div className='image-container'><img src= {res.images.split("~")[0]} alt='imagepic'/></div>
         <div className='item-detail-box'>
           <div className='item-detail'>
