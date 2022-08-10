@@ -3,9 +3,7 @@ import './Displaysearchitem.css'
 import ItemSearchPreviewGrid from './Item_Preview/Item_search_preview_grid'
 
 export default class Displaysearchitem extends Component {
-  
   render() {
-    
     return (
       <div className='item-container'>
         <div className='item-container-box'>
@@ -15,7 +13,7 @@ export default class Displaysearchitem extends Component {
         <div className='item-box'>
             <div className='handle'>
               <div className='item-element'>
-                <ItemSearchPreviewGrid data={this.props.data} tooggleFav={this.props.tooggleFav} />
+                <ItemSearchPreviewGrid cart={this.props.cart} data={this.props.data} increseQuantity={this.props.increseQuantity} decreaseQuantity={this.props.decreaseQuantity} tooggleFav={this.props.tooggleFav} />
               </div>
             </div>
             
