@@ -13,6 +13,7 @@ export default class Header extends Component {
 		this.state ={isActive:false};
   }
   render() {
+    this.total =  Object.keys(this.props.cart).length || 0
     return (
       <header>
         <div className="header-container" display="flex">
@@ -61,9 +62,9 @@ export default class Header extends Component {
             </button>
             <button className="cart-icon-button">
             <div className='cart-item-indicator'>
-              <span>3</span>
+              <span>{this.total}</span>
             </div>
-              <div className="cart-pic-icon">
+              <div onClick={()=>{this.props.tooglecart(true)}} className="cart-pic-icon">
                 <svg
                   width="28"
                   height="28"
