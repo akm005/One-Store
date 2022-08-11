@@ -36,7 +36,7 @@ let plus = (
 
 export default class AddItem extends Component {
   render() {
-    let { cart, product, increseQuantity, decreaseQuantity } = this.state;
+    let { cart, product, increseQuantity, decreaseQuantity } = this.props;
     this.count = cart.hasOwnProperty(product.sku)
       ? +cart[product.sku].count
       : 0;
