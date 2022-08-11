@@ -24,6 +24,25 @@ componentDidMount(){
   // fetchdata = ()=>{
   //   return this.state.data;
   // }  
+
+  // Currently using the product in memory object so state is lost on reload
+  //  We can store the state in local storgae to persist 
+  
+toogleFavorite =(SKU)=>{
+  console.log(SKU, this.state.data)
+  if(this.state && this.state.data){
+    const final  = this.state.data.map((product)=>{
+      if (product.sku === SKU){
+        product.isFav= !product.isFav
+      }
+      return product
+    })
+    this.setState({data:final})
+  }
+
+
+
+}
 datadisplay = () =>{
   return this.state.data
 }
@@ -34,7 +53,7 @@ datadisplay = () =>{
       <div className="App">
       <Header search={this.searchhandler}/>
       <Navigation/>
-      <Displaysearchitem data={this.state.data}  />
+      <Displaysearchitem data={this.state.data} tooggleFav={this.toogleFavorite} />
       {/* <ul>
           {this.state.data.map(data =><li key={data.sku}>{data.sku}*<br/></li>)}
         </ul> */}
