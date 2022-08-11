@@ -62,7 +62,7 @@ export function useShoppingCart() {
           return currItems.filter(item => item.item_id !== item_id)
         })
       }
-    const cartstate =()=> CartStatus;
+    const cartstate =()=> setCartStatus(true);
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -78,6 +78,7 @@ export function useShoppingCart() {
       }}
     >
       {children}
+      <div>find where i am</div>
       {/* <ShoppingCart isOpen={isOpen} /> */}
     </ShoppingCartContext.Provider>
   )
