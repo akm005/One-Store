@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 // import { SerchInputContainer } from "../../common/search-input/search-input";
 // <SerchInputContainer/>
+
 import "./Header.css";
 import logo from "../../Assets/logo.jpeg";
 import Search from "./search";
 import Category from "./Category";
 import { searchIcon, profileIcon, cartIcon } from "../../Assets/svg";
-
-import {useShoppingCart} from '../../Context/SearchItemContext'
- const  Indicator = () => {
-  const {cartQuantity} = useShoppingCart()
-  return (
-    <div className="cart-highlighter">
-      {(cartQuantity>0)?cartQuantity:""}
-    </div>
-  )
-}
+// any function name with use at starting should not be used
+// Only to be used by hooks that are to used in functional component
+import { ShoppingCartContext } from "../../Context/SearchItemContext";
+const Indicator = ({ count }) => {
+  return <div className="cart-highlighter">{count}</div>;
+};
 
 export default class Header extends Component {
-
+  static contextType = ShoppingCartContext;
   constructor(props) {
     super(props);
-    this.state = { isActive: false,
-    };
+    this.state = { isActive: false };
   }
+
   render() {
-    this.total = Object.keys(this.props.cart).length || 0;
+    console.log(this.context, "contxt");
+    let { cart, search, tooglecart } = this.context;
+    this.total = Object.keys(cart).length || 0;
     return (
       <header>
         <div className="header-container" display="flex">
@@ -41,7 +40,7 @@ export default class Header extends Component {
                 <span className="search-icon">{searchIcon}</span>
               </div>
               <div className="search-box">
-                <Search search={this.props.search} />
+                <Search search={search} />
               </div>
               <div className="category-box">
                 <Category />
@@ -54,14 +53,11 @@ export default class Header extends Component {
             </button>
             <button className="cart-icon-button">
               <div className="cart-item-indicator">
-                {/* <span> */}
-                  {/* {this.total || 3} */}
-                  {/* </span> */}
-                  <Indicator/>
+                <Indicator count={this.total} />
               </div>
               <div
                 onClick={() => {
-                  this.props.tooglecart(true);
+                  tooglecart(true);
                 }}
                 className="cart-pic-icon"
               >
@@ -75,6 +71,3 @@ export default class Header extends Component {
     );
   }
 }
-
-
-

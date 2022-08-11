@@ -6,9 +6,13 @@ import Navigation from "./Components/Navigations/Navigation";
 import Displaysearchitem from "./Components/Item_Section/Displaysearchitem";
 import Footer from "./Components/Footers/Footer";
 import { ProductCart } from "./Components/cart/cart";
-import {ShoppingCartProvider} from './Context/SearchItemContext'
+import {
+  ShoppingCartProvider,
+  ShoppingCartContext,
+} from "./Context/SearchItemContext";
 
 export default class App extends Component {
+  static contextType = ShoppingCartContext;
   state = {
     data: [],
     displayCart: false,
@@ -109,29 +113,26 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <ShoppingCartProvider>
-        <Header
-          cart={this.state.cart}
-          search={this.searchhandler}
-          tooglecart={this.tooglecart}
-        />
-        <Navigation />
-        <Displaysearchitem
-          data={this.state.data}
-          tooggleFav={this.toogleFavorite}
-          increseQuantity={this.increseQuantity}
-          decreaseQuantity={this.decreaseQuantity}
-          cart={this.state.cart}
-        />
-        <ProductCart
-          display={this.state.displayCart}
-          cart={this.state.cart}
-          removeFromCart={this.removeFromCart}
-          addtoCart={this.addtoCart}
-          tooglecart={this.tooglecart}
-          toogleFavorite={this.toogleFavorite}
-        />
-        <Footer />
+        <ShoppingCartProvider
+          value={{
+            cart: this.state.cart,
+            search: this.searchhandler,
+            tooglecart: this.tooglecart,
+            data: this.state.data,
+            tooggleFav: this.toogleFavorite,
+            increseQuantity: this.increseQuantity,
+            decreaseQuantity: this.decreaseQuantity,
+            display: this.state.displayCart,
+            removeFromCart: this.removeFromCart,
+            addtoCart: this.addtoCartdisplayCart,
+            toogleFavorite: this.toogleFavoritedisplayCart,
+          }}
+        >
+          <Header/>
+          <Navigation />
+          <Displaysearchitem/>
+          <ProductCart/>
+          <Footer />
         </ShoppingCartProvider>
       </div>
     );

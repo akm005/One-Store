@@ -1,28 +1,35 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {add,remove,trash} from '../../../Assets/svg'
-import {useShoppingCart} from '../../../Context/SearchItemContext'
+import {useShoppingCart , ShoppingCartContext} from '../../../Context/SearchItemContext'
 
-export default function AddRemoveItem(props) {
+
+export default function AddRemoveItem({product}) {
+
+  let context =  useContext(ShoppingCartContext)
+  console.log(product, "ctr")
     const { getItemQuantity,
-            increaseCartQuantity,
-            decreaseCartQuantity,
-            removeFromCart} = useShoppingCart()
-    const {productId} = props
-    // console.log(productId)
+      increseQuantity,
+      decreaseQuantity,
+      removeFromCart, cart } = context
+      let count =  0
+      if (cart.hasOwnProperty(product.sku)){
+          count = cart[product.sku].count
+      }
+      
   return (
     <>
-        <button onClick={() => increaseCartQuantity(productId)}>
+        <button onClick={() => increseQuantity(product)}>
           <div className="iconbox">{add}</div>
         </button>
-        {getItemQuantity(productId) > 0 ? (
+        {count > 0 ? (
           <>
             <div className="item-selected-count">
-            <span>{getItemQuantity(productId)}</span>
+            <span>{count}</span>
             </div>
-            <button onClick={() => decreaseCartQuantity(productId)}>
+            <button onClick={() => decreaseQuantity(product)}>
               <div className="iconbox">{remove}</div>
             </button>
-            <button onClick={() => removeFromCart(productId)}>
+            <button onClick={() => removeFromCart(product)}>
               <div className="iconbox">{trash}</div>
             </button>
           </>
