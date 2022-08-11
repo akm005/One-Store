@@ -66,10 +66,16 @@
 .iconbox{
     display: flex;
 }
+.addtocart-icon{
+    display: flex;
+    flex-flow: column-reverse;
+}
 .addtocart-icon >* , .remtocart-icon >*{
     border-radius: 1em;
     border-width: thin;
     border-color: rgb(233, 69, 96);
+    margin: 5% 0em;
+    
 }
 
 .look-wish{

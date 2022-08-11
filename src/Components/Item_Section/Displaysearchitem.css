@@ -27,6 +27,11 @@
     padding-top: 2rem;
 }
 
-.filter-box{
-    
+.item-element>*{
+    /* flex: -1 -1 auto; */
+    /* flex-basis: 33.3%; */
+    /* box-sizing: border-box; */
 }
+/* .item-element> :nth-child(){
+    flex: 0 1 auto;
+} */
