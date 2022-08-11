@@ -29,7 +29,7 @@ export default class ItemSearchPreviewGrid extends Component {
             </div>
           </div>
         <div className='addtocart-icon'>
-        <AddItem itemid1={res.sku}/>
+        <AddItem cart={this.props.cart} increseQuantity={this.props.increseQuantity} decreaseQuantity={this.props.decreaseQuantity} product={res} itemid1={res.sku}/>
         </div>
         
         </div>
