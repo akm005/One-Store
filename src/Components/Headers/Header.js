@@ -10,9 +10,6 @@ import { searchIcon, profileIcon, cartIcon } from "../../Assets/svg";
 // any function name with use at starting should not be used
 // Only to be used by hooks that are to used in functional component
 import { ShoppingCartContext } from "../../Context/SearchItemContext";
-const Indicator = ({ count }) => {
-  return <div className="cart-highlighter">{count}</div>;
-};
 
 export default class Header extends Component {
   static contextType = ShoppingCartContext;
@@ -22,9 +19,13 @@ export default class Header extends Component {
   }
 
   render() {
-    console.log(this.context, "contxt");
+    // console.log(this.context, "contxt");
     let { cart, search, tooglecart } = this.context;
-    this.total = Object.keys(cart).length || 0;
+    this.total = Object.values(cart).reduce(
+      (count, item) => item.count + count,
+      0
+    ) || "" ;
+    console.log(this.total)
     return (
       <header>
         <div className="header-container" display="flex">
@@ -53,7 +54,7 @@ export default class Header extends Component {
             </button>
             <button className="cart-icon-button">
               <div className="cart-item-indicator">
-                <Indicator count={this.total} />
+              <div className="cart-highlighter">{this.total}</div>
               </div>
               <div
                 onClick={() => {

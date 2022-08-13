@@ -6,7 +6,7 @@ import {useShoppingCart , ShoppingCartContext} from '../../../Context/SearchItem
 export default function AddRemoveItem({product}) {
 
   let context =  useContext(ShoppingCartContext)
-  console.log(product, "ctr")
+  // console.log(product, "ctr")
     const { getItemQuantity,
       increseQuantity,
       decreaseQuantity,
