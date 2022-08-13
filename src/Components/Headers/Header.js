@@ -22,7 +22,7 @@ export default class Header extends Component {
     // console.log(this.context, "contxt");
     let { cart, search, tooglecart } = this.context;
     this.total = Object.values(cart).reduce(
-      (count, item) => item.count + count,
+      (quantity, item) => item.quantity + quantity,
       0
     ) || "" ;
     console.log(this.total)

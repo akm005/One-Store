@@ -10,7 +10,7 @@ export function ProductCart() {
   let context = useContext(ShoppingCartContext);
   let { display, tooglecart, cart, addtoCart, toogleFavorite, removeFromCart } = context;
   let total = Object.keys(cart).length || 0;
-  let productList = Object.entries(cart).map(([sku, { data, count }], i) => (
+  let productList = Object.entries(cart).map(([sku, { data, quantity }], i) => (
     <Card key={sku} className="m-1" style={{ width: "100%" }}>
       <Card.Body>
         <Card.Title className="text-truncate">{data.name}</Card.Title>
@@ -30,12 +30,12 @@ export function ProductCart() {
             </div>
             <div>
               {" "}
-              <span>Quantity</span> : <span> {count}</span>{" "}
+              <span>Quantity</span> : <span> {quantity}</span>{" "}
             </div>
 
             <div>
               {" "}
-              <span>Price</span> :<span>{data.price * count}</span>{" "}
+              <span>Price</span> :<span>{data.price * quantity}</span>{" "}
             </div>
           </div>
         </div>

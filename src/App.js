@@ -52,9 +52,11 @@ export default class App extends Component {
   };
 
   addtoCart = (product, quantity) => {
-    this.setState({ cart: { count: 0, product } });
+    this.setState({ cart: { quantity: 0, product } });
   };
-
+  _constructCartObject = (product, quantity) => {
+    return { [product.sku]: { quantity: quantity, data: { ...product } } };
+  };
   increseQuantity = (product) => {
     if (this.state.cart.hasOwnProperty(product.sku)) {
       this.setState({
@@ -62,7 +64,7 @@ export default class App extends Component {
           ...this.state.cart,
           ...this._constructCartObject(
             product,
-            this.state.cart[product.sku].count + 1
+            this.state.cart[product.sku].quantity + 1
           ),
         },
       });
@@ -72,12 +74,10 @@ export default class App extends Component {
       });
   };
 
-  _constructCartObject = (product, quantitiy) => {
-    return { [product.sku]: { count: quantitiy, data: { ...product } } };
-  };
+ 
   decreaseQuantity = (product) => {
     if (this.state.cart.hasOwnProperty(product.sku)) {
-      let quantity = this.state.cart[product.sku].count - 1;
+      let quantity = this.state.cart[product.sku].quantity - 1;
       if (+quantity === 0) {
         let newCart = { ...this.state.cart };
         delete newCart[product.sku];
@@ -90,7 +90,7 @@ export default class App extends Component {
             ...this.state.cart,
             ...this._constructCartObject(
               product,
-              this.state.cart[product.sku].count - 1
+              this.state.cart[product.sku].quantity - 1
             ),
           },
         });

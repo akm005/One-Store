@@ -11,9 +11,9 @@ export default function AddRemoveItem({product}) {
       increseQuantity,
       decreaseQuantity,
       removeFromCart, cart } = context
-      let count =  0
+      let quantity =  0
       if (cart.hasOwnProperty(product.sku)){
-          count = cart[product.sku].count
+        quantity = cart[product.sku].quantity
       }
       
   return (
@@ -21,10 +21,10 @@ export default function AddRemoveItem({product}) {
         <button onClick={() => increseQuantity(product)}>
           <div className="iconbox">{add}</div>
         </button>
-        {count > 0 ? (
+        {quantity > 0 ? (
           <>
             <div className="item-selected-count">
-            <span>{count}</span>
+            <span>{quantity}</span>
             </div>
             <button onClick={() => decreaseQuantity(product)}>
               <div className="iconbox">{remove}</div>
