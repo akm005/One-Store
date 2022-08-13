@@ -5,6 +5,10 @@ header{
     
 }
 
+input,select{
+    background-color: #F0F0F0;
+}
+
 .header-container{
     display: flex;
     justify-content: space-between; 

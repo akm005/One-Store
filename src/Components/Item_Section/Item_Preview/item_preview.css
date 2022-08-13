@@ -69,6 +69,7 @@
 .addtocart-icon{
     display: flex;
     flex-flow: column-reverse;
+    height: 20px;
 }
 .addtocart-icon >* , .remtocart-icon >*{
     border-radius: 1em;
