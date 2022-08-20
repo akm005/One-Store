@@ -1,0 +1,9 @@
+diff a/src/App.js b/src/App.js	(rejected hunks)
+@@ -52,7 +52,6 @@
+   };
+ 
+   addtoCart = (product, quantity) => {
+-    this.setState({ cart: { count: 0, product } });
+     this.setState({ cart: { quantity: 0, product } });
+   };
+   _constructCartObject = (product, quantity) => {

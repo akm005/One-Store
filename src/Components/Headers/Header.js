@@ -6,7 +6,7 @@ import "./Header.css";
 import logo from "../../Assets/logo.jpeg";
 import Search from "./search";
 import Category from "./Category";
-import { searchIcon, profileIcon, cartIcon } from "../../Assets/svg";
+import { getIcon } from "../../Assets/image";
 // any function name with use at starting should not be used
 // Only to be used by hooks that are to used in functional component
 import { ShoppingCartContext } from "../../Context/SearchItemContext";
@@ -25,7 +25,7 @@ export default class Header extends Component {
       (quantity, item) => item.quantity + quantity,
       0
     ) || "" ;
-    console.log(this.total)
+    // console.log(this.total)
     return (
       <header>
         <div className="header-container" display="flex">
@@ -38,7 +38,7 @@ export default class Header extends Component {
           <div className="header-search-container">
             <div className="search-box-container">
               <div className="search-icon-cointainer">
-                <span className="search-icon">{searchIcon}</span>
+                <span className="search-icon">{getIcon("searchIcon")}</span>
               </div>
               <div className="search-box">
                 <Search search={search} />
@@ -50,7 +50,7 @@ export default class Header extends Component {
           </div>
           <div className="header-profile-container">
             <button className="profile-icon-button">
-              <div className="profile-pic-icon">{profileIcon}</div>
+              <div className="profile-pic-icon">{getIcon("profileIcon")}</div>
             </button>
             <button className="cart-icon-button">
               <div className="cart-item-indicator">
@@ -62,7 +62,7 @@ export default class Header extends Component {
                 }}
                 className="cart-pic-icon"
               >
-                {cartIcon}
+                {getIcon("cartIcon")}
               </div>
             </button>
             {/* </div> */}

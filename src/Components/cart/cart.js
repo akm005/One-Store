@@ -8,7 +8,7 @@ import { ShoppingCartContext } from "./../../Context/SearchItemContext";
 
 export function ProductCart() {
   let context = useContext(ShoppingCartContext);
-  let { display, tooglecart, cart, addtoCart, toogleFavorite, removeFromCart } = context;
+  let { display, tooglecart, cart, toogleFavorite, removeFromCart } = context;
   let total = Object.keys(cart).length || 0;
   let productList = Object.entries(cart).map(([sku, { data, quantity }], i) => (
     <Card key={sku} className="m-1" style={{ width: "100%" }}>
@@ -20,7 +20,7 @@ export function ProductCart() {
               height={"100%"}
               width={"100%"}
               variant="bottom"
-              src={data.images}
+              src={data.images.split("~")[0]}
             />
           </div>
           <div className="d-flex flex-column">
