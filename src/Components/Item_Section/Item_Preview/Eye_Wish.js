@@ -1,13 +1,13 @@
 import React from 'react'
-import {eye,heart,heartFill} from '../../../Assets/svg'
-
+import {getIcon} from '../../../Assets/image'
 
 export default function EyeWish(props) {
+  // console.log(props.eye.toogleeye)
   return (
     <div className='look-wish'>
       <div>
-        <div onFocus={()=>alert("item in focus")} className='eye-icon'>{eye}</div>
-        <div className='heart-icon' onClick={()=>props.tooggleFav(props.product.sku)}>{props.product.isFav? heartFill: heart}</div>
+        <div onClick={()=>props.eye.toogleeye(props.product)} className='eye-icon'>{getIcon("eye")}</div>
+        <div className='heart-icon' onClick={()=>props.toogleFavorite(props.product.sku)}>{props.product.isFav? getIcon("heartFill"): getIcon("heart")}</div>
       </div>
     </div>
   )
