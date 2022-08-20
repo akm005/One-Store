@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import "./Displaysearchitem.css";
 import ItemSearchPreviewGrid from "./Item_Preview/Item_search_preview_grid";
-import { ShoppingCartContext } from "./../../Context/SearchItemContext";
 
 export default class Displaysearchitem extends Component {
-  static contextType = ShoppingCartContext;
   render() {
-    let { cart, data, increseQuantity, decreaseQuantity, tooggleFav } =
-      this.context;
     return (
       <div className="item-container">
         <div className="item-container-box">
@@ -18,11 +14,9 @@ export default class Displaysearchitem extends Component {
             <div className="handle">
               <div className="item-element">
                 <ItemSearchPreviewGrid
-                  cart={cart}
-                  data={data}
-                  increseQuantity={increseQuantity}
-                  decreaseQuantity={decreaseQuantity}
-                  tooggleFav={tooggleFav}
+                  data={this.props.data}
+                  toogleFavorite= {this.props.toogleFavorite}
+                  eye={this.props.eye}
                 />
               </div>
             </div>

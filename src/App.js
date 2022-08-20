@@ -10,6 +10,7 @@ import {
   ShoppingCartProvider,
   ShoppingCartContext,
 } from "./Context/SearchItemContext";
+import ItemZoomPreview from "./Components/Item_Section/Item_Preview/Item_Zoom_Preview";
 
 export default class App extends Component {
   static contextType = ShoppingCartContext;
@@ -17,6 +18,7 @@ export default class App extends Component {
     data: [],
     displayCart: false,
     cart: {},
+    displayeye:{isvisible:false,eyedata:[]}
   };
 
   componentDidMount() {
@@ -51,9 +53,10 @@ export default class App extends Component {
     this.setState({ displayCart: arg });
   };
 
-  addtoCart = (product, quantity) => {
-    this.setState({ cart: { quantity: 0, product } });
+  toogleeye = (eyedata) => {
+    this.setState({displayeye:{isvisible:!this.state.displayeye.isvisible,eyedata:[eyedata]}});
   };
+
   _constructCartObject = (product, quantity) => {
     return { [product.sku]: { quantity: quantity, data: { ...product } } };
   };
@@ -106,11 +109,8 @@ export default class App extends Component {
     }
   };
 
-  datadisplay = () => {
-    return this.state.data;
-  };
-
   render() {
+    // console.log(this.state.displayeye)
     return (
       <div className="App">
         <ShoppingCartProvider
@@ -119,20 +119,30 @@ export default class App extends Component {
             search: this.searchhandler,
             tooglecart: this.tooglecart,
             data: this.state.data,
-            tooggleFav: this.toogleFavorite,
+            
             increseQuantity: this.increseQuantity,
             decreaseQuantity: this.decreaseQuantity,
             display: this.state.displayCart,
             removeFromCart: this.removeFromCart,
-            addtoCart: this.addtoCartdisplayCart,
-            toogleFavorite: this.toogleFavoritedisplayCart,
+
+            
           }}
         >
           <Header/>
           <Navigation />
-          <Displaysearchitem/>
+          <Displaysearchitem 
+            data={this.state.data}
+            toogleFavorite= {this.toogleFavorite}
+            eye={{eye:this.state.displayeye,
+              toogleeye:this.toogleeye  
+            }}
+            />
           <ProductCart/>
           <Footer />
+          <ItemZoomPreview
+            eye={{eye:this.state.displayeye,
+              toogleeye:this.toogleeye}}  
+            />
         </ShoppingCartProvider>
       </div>
     );

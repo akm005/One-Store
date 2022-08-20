@@ -1,13 +1,13 @@
 import React,{useContext} from 'react'
-import {add,remove,trash} from '../../../Assets/svg'
-import {useShoppingCart , ShoppingCartContext} from '../../../Context/SearchItemContext'
+import {getIcon} from '../../../Assets/image'
+import {ShoppingCartContext} from '../../../Context/SearchItemContext'
 
 
 export default function AddRemoveItem({product}) {
 
   let context =  useContext(ShoppingCartContext)
   // console.log(product, "ctr")
-    const { getItemQuantity,
+    const { 
       increseQuantity,
       decreaseQuantity,
       removeFromCart, cart } = context
@@ -19,7 +19,7 @@ export default function AddRemoveItem({product}) {
   return (
     <>
         <button onClick={() => increseQuantity(product)}>
-          <div className="iconbox">{add}</div>
+          <div className="iconbox">{getIcon("add")}</div>
         </button>
         {quantity > 0 ? (
           <>
@@ -27,10 +27,10 @@ export default function AddRemoveItem({product}) {
             <span>{quantity}</span>
             </div>
             <button onClick={() => decreaseQuantity(product)}>
-              <div className="iconbox">{remove}</div>
+              <div className="iconbox">{getIcon("remove")}</div>
             </button>
             <button onClick={() => removeFromCart(product)}>
-              <div className="iconbox">{trash}</div>
+              <div className="iconbox">{getIcon("trash")}</div>
             </button>
           </>
         ) : (
