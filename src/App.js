@@ -38,7 +38,7 @@ export default class App extends Component {
   //  We can store the state in local storgae to persist
 
   toogleFavorite = (SKU) => {
-    console.log(SKU, this.state.data);
+    // console.log(SKU, this.state.data);
     if (this.state && this.state.data) {
       const final = this.state.data.map((product) => {
         if (product.sku === SKU) {
@@ -49,6 +49,7 @@ export default class App extends Component {
       this.setState({ data: final });
     }
   };
+
   tooglecart = (arg) => {
     this.setState({ displayCart: arg });
   };

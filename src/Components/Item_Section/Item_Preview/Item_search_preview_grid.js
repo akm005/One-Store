@@ -21,7 +21,7 @@ export default class ItemSearchPreviewGrid extends Component {
               <EyeWish
                 product={res}
                 eye={this.props.eye}
-                toogleFavorite={this.props.tooggleFav}
+                toogleFavorite={this.props.toogleFavorite}
               />
               <div className="image-container">
                 <img src={res.images.split("~")[0]} alt="imagepic" />
