@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import "./App.css";
 import Header from "./Components/Headers/Header";
@@ -6,11 +7,10 @@ import Navigation from "./Components/Navigations/Navigation";
 import Displaysearchitem from "./Components/Item_Section/Displaysearchitem";
 import Footer from "./Components/Footers/Footer";
 import { ProductCart } from "./Components/cart/cart";
-import {
-  ShoppingCartProvider,
-  ShoppingCartContext,
-} from "./Context/SearchItemContext";
+import {ShoppingCartProvider,ShoppingCartContext,} from "./Context/SearchItemContext";
 import ItemZoomPreview from "./Components/Item_Section/Item_Preview/Item_Zoom_Preview";
+import About from './Pages/About'
+import Contact from './Pages/Contacts'
 
 export default class App extends Component {
   static contextType = ShoppingCartContext;
@@ -113,7 +113,8 @@ export default class App extends Component {
   render() {
     // console.log(this.state.displayeye)
     return (
-      <div className="App">
+      <Router>
+          <div className="App">
         <ShoppingCartProvider
           value={{
             cart: this.state.cart,
@@ -124,20 +125,23 @@ export default class App extends Component {
             increseQuantity: this.increseQuantity,
             decreaseQuantity: this.decreaseQuantity,
             display: this.state.displayCart,
-            removeFromCart: this.removeFromCart,
-
-            
+            removeFromCart: this.removeFromCart, 
           }}
         >
           <Header/>
           <Navigation />
-          <Displaysearchitem 
+          <Routes>
+                 <Route exact path='/' element={<Displaysearchitem 
             data={this.state.data}
             toogleFavorite= {this.toogleFavorite}
             eye={{eye:this.state.displayeye,
               toogleeye:this.toogleeye  
             }}
-            />
+            />}></Route>
+                 <Route exact path='/about' element={< About />}></Route>
+                 <Route exact path='/contact' element={< Contact />}></Route>
+          </Routes>
+
           <ProductCart/>
           <Footer />
           <ItemZoomPreview
@@ -146,6 +150,7 @@ export default class App extends Component {
             />
         </ShoppingCartProvider>
       </div>
+      </Router>
     );
   }
 }
