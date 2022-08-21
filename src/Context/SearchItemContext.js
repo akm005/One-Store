@@ -10,7 +10,6 @@ export function ShoppingCartProvider({ children, value }) {
       }}
     >
       {children}
-      <div>find where i am</div>
     </ShoppingCartContext.Provider>
   );
 }

@@ -162,3 +162,14 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+link,a{
+    text-decoration: none;
+    color: black;
+}
+.original-price{
+    text-decoration: line-through;
+}
+.current-price{
+    color: rgb(233, 69, 96);
+}

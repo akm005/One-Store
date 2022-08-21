@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 import axios from "axios";
 import "./App.css";
 import Header from "./Components/Headers/Header";
 import Navigation from "./Components/Navigations/Navigation";
-import Displaysearchitem from "./Components/Item_Section/Displaysearchitem";
 import Footer from "./Components/Footers/Footer";
 import { ProductCart } from "./Components/cart/cart";
 import {ShoppingCartProvider,ShoppingCartContext,} from "./Context/SearchItemContext";
 import ItemZoomPreview from "./Components/Item_Section/Item_Preview/Item_Zoom_Preview";
+import PageHandler from "./Pages/PageHandler";
 import About from './Pages/About'
 import Contact from './Pages/Contacts'
+import Displaysearchitem from './Components/Item_Section/Displaysearchitem'
 
 export default class App extends Component {
   static contextType = ShoppingCartContext;
@@ -20,9 +21,9 @@ export default class App extends Component {
     cart: {},
     displayeye:{isvisible:false,eyedata:[]}
   };
-
+  
   componentDidMount() {
-    axios.get("./data.json").then((res) => {
+    axios.get("http://localhost:3000/data.json").then((res) => {
       this.setState({ data: res.data });
     });
   }
@@ -109,13 +110,21 @@ export default class App extends Component {
       });
     }
   };
-
+  getProduct = (productId) =>{
+    const findproduct = []
+    this.state.data.forEach((product) => {
+      if (product.sku === productId) {
+        findproduct.push(product);
+      }
+    });
+    // console.log(findproduct)
+    return findproduct;
+  }
   render() {
-    // console.log(this.state.displayeye)
     return (
       <Router>
-          <div className="App">
-        <ShoppingCartProvider
+         <div className="App">
+          <ShoppingCartProvider
           value={{
             cart: this.state.cart,
             search: this.searchhandler,
@@ -140,8 +149,8 @@ export default class App extends Component {
             />}></Route>
                  <Route exact path='/about' element={< About />}></Route>
                  <Route exact path='/contact' element={< Contact />}></Route>
+                 <Route exact path='/product/:Id' element={<PageHandler getProduct={this.getProduct}/>}></Route>
           </Routes>
-
           <ProductCart/>
           <Footer />
           <ItemZoomPreview
@@ -149,8 +158,9 @@ export default class App extends Component {
               toogleeye:this.toogleeye}}  
             />
         </ShoppingCartProvider>
-      </div>
+      </div>   
       </Router>
+          
     );
   }
 }
