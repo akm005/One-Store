@@ -12,6 +12,7 @@ import PageHandler from "./Pages/PageHandler";
 import About from './Pages/About'
 import Contact from './Pages/Contacts'
 import Displaysearchitem from './Components/Item_Section/Displaysearchitem'
+import InnerSearchNavigation from './Components/Innernavigations/InnerSearchNavigation'
 
 export default class App extends Component {
   static contextType = ShoppingCartContext;
@@ -139,6 +140,7 @@ export default class App extends Component {
         >
           <Header/>
           <Navigation />
+          <InnerSearchNavigation/>
           <Routes>
                  <Route exact path='/' element={<Displaysearchitem 
             data={this.state.data}
