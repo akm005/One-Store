@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,createRef } from "react";
 // import { SerchInputContainer } from "../../common/search-input/search-input";
 // <SerchInputContainer/>
 
@@ -16,6 +16,7 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { isActive: false };
+    this.yourRef = createRef();
   }
 
   render() {
@@ -28,7 +29,7 @@ export default class Header extends Component {
     // console.log(this.total)
     return (
       <header>
-        <div className="header-container" display="flex">
+        <div className="header-container" display="flex" ref={this.yourRef}>
           {/* <div className="header-profile-container"> */}
           <div className="header-logo-box">
             <div className="logo">
