@@ -1,17 +1,35 @@
-footer{
-    background-color: #F0F0F0;
+.googlebutton{
+    
+    box-shadow: none;
+    cursor:pointer;
+    border-radius: 0.5em;
+    background-color: rgb(12,42,77);
+    color: white;
+    padding: 8px 12px;
+    margin:0.5rem;
+    display: flex;
+    align-items: flex-start;
+    border: none;
+    
 }
 .footer-container{
-    max-width: 1200px;
-    justify-content: space-between;
+
+    justify-content: space-around;
     display: flex;
     height: 100%;
-    margin: 0px 75px;
+    margin: 0px 2%;
+    background-color: #F0F0F0;
+    color: #F0F0F0;
+    font-family: monospace;
+    background: #2b547e;
+    
 }
 
 .footer{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    
     
 }
 .footer > *{
@@ -19,4 +37,48 @@ footer{
 }
 .logo img{
     height: 2.5em;
+}
+.button_plan{
+    display: flex;
+    
+}
+.get_it_on{
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start
+    ;
+}
+.googleplay{
+    font-size: 15px;
+
+}
+.Apple-button{
+    
+    box-shadow: none;
+    cursor:pointer;
+    border-radius: 0.5em;
+    background-color: rgb(12,42,77);
+    color: white;
+    padding: 8px 12px;
+    margin:0.5rem;
+    display: flex;
+    border: none;
+}
+.app-store-logo-here{
+    display: flex;
+    flex-direction: row;
+   
+}
+.download-on-the{
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 0.5em;
+}
+.apple-store{
+    margin-left: 0.2em;
 }
