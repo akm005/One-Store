@@ -3,6 +3,7 @@ import "./item_preview.css";
 import EyeWish from "./Eye_Wish";
 import AddRemoveItem from "./Add_Remove_Item";
 import { getIcon } from "../../../Assets/image";
+import { Link } from "react-router-dom";
 
 export default class ItemSearchPreviewGrid extends Component {
   heartclick = () => {
@@ -10,6 +11,7 @@ export default class ItemSearchPreviewGrid extends Component {
   };
 
   render() {
+    // console.log(this.props)
     return (
       <>
         {this.props.data.map((res) => (
@@ -23,9 +25,10 @@ export default class ItemSearchPreviewGrid extends Component {
                 eye={this.props.eye}
                 toogleFavorite={this.props.toogleFavorite}
               />
+              <Link to={`/product/${res.sku}`}>
               <div className="image-container">
                 <img src={res.images.split("~")[0]} alt="imagepic" />
-              </div>
+              </div></Link>
             </div>
             <div className="cont2">
               <div className="name-container">{res?.name}</div>

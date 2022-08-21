@@ -33,7 +33,8 @@ export default class Footer extends Component {
                 <div>Track Your Order</div>
                 <div>Corporate & Bulk Purchasing</div>
                 <div>Returns & Refunds</div> </div>
-                <div className='Contact'> <h2>Contact Us</h2>
+                <div className='Contact'> 
+               <h2>Contact Us</h2>
                 <div>70 Washington Square South, New York, NY 10012, United States
                         <br/>Email: uilib.help@gmail.com
                         <br/>Phone: +1 1123 456 780
