@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./Displaysearchitem.css";
 import ItemSearchPreviewGrid from "./Item_Preview/Item_search_preview_grid";
+import InnerSearchNavigation from '../Innernavigations/InnerSearchNavigation'
 
 export default class Displaysearchitem extends Component {
   render() {
-    return (
+    return (<div>
+      <InnerSearchNavigation/>
       <div className="item-container">
         <div className="item-container-box">
           <div className="filter-box">
@@ -14,15 +16,17 @@ export default class Displaysearchitem extends Component {
             <div className="handle">
               <div className="item-element">
                 <ItemSearchPreviewGrid
-                  data={this.props.data}
-                  toogleFavorite= {this.props.toogleFavorite}
-                  eye={this.props.eye}
+                  data={this.props?.data}
+                  toogleFavorite= {this.props?.toogleFavorite}
+                  eye={this.props?.eye}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+      
     );
   }
 }

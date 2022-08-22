@@ -11,11 +11,7 @@ export default class Footer extends Component {
               <div className='footer' > 
                 <div className='Home'>
                   <div className='company-detail'><img src={logo} width="80px" height="40px" alt='logo'></img>
-                  <p>The customer is very important,<br/>
-                  the customer will be followed by the customer.<br/>
-                  The author freed it and, in pregnancy.<br/>
-                  Let there be no course in the house.<br/>
-                  He was also educated as a care provider.</p>
+                  <div><span>© Copyright 2022 One Store. <br/>All rights reserved</span></div>
                   <div className='app-store-logo-here'>
                   
                   <button className='googlebutton'>
@@ -37,10 +33,6 @@ export default class Footer extends Component {
                   
                   </div>
                   </div>
-                  <div>
-                  </div>
-
-
                   </div>
                 <div className='About us' align="left"> <h2>About Us </h2>
 
@@ -54,9 +46,6 @@ export default class Footer extends Component {
                 </ul>
                   
                   </div>
-                  <div>
-
-                  </div>
                 <div className='Customer'  align="left"> <h2>Customer Care </h2>
                 <ul>
                   <li>Help Center </li> <br/>
@@ -66,10 +55,6 @@ export default class Footer extends Component {
                   <li> Privacy Policy </li> <br/>         
                   
                 </ul>
-                 </div>
-                 <div>
-
-
                  </div>
                 <div className='Contact' align="left"> <h2>Contact Us</h2>
                 <div>70 Washington Square South,<br/> New York, NY 10012,<br/> United States

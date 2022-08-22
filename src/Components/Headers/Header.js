@@ -16,20 +16,36 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { isActive: false };
-    this.yourRef = createRef();
+    this.yourRef=createRef();
   }
+  componentDidUpdate(){
 
+    console.log(window.pageYOffset,this.yourRef.current.offsetTop)
+    const header = document.getElementById('header')
+
+    let fixedTop = this.yourRef.current.offsetTop
+
+    const stickyTop = () => {
+      if (window.pageYOffset > fixedTop) {
+        header.classList.add('sticky')
+      } else {
+        header.classList.remove('sticky')
+      }
+    }
+    window.addEventListener('scroll', stickyTop)
+  }
+  
   render() {
     // console.log(this.context, "contxt");
     let { cart, search, tooglecart } = this.context;
     this.total = Object.values(cart).reduce(
       (quantity, item) => item.quantity + quantity,
       0
-    ) || "" ;
+    ) || " " ;
     // console.log(this.total)
     return (
-      <header>
-        <div className="header-container" display="flex" ref={this.yourRef}>
+      <header id='header'ref={this.yourRef}>
+        <div className="header-container" display="flex">
           {/* <div className="header-profile-container"> */}
           <div className="header-logo-box">
             <div className="logo">
@@ -54,7 +70,7 @@ export default class Header extends Component {
               <div className="profile-pic-icon">{getIcon("profileIcon")}</div>
             </button>
             <button className="cart-icon-button">
-              <div className="cart-item-indicator">
+            <div className="cart-item-indicator">
               <div className="cart-highlighter">{this.total}</div>
               </div>
               <div
@@ -66,7 +82,6 @@ export default class Header extends Component {
                 {getIcon("cartIcon")}
               </div>
             </button>
-            {/* </div> */}
           </div>
         </div>
       </header>

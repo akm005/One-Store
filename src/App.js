@@ -12,16 +12,18 @@ import PageHandler from "./Pages/PageHandler";
 import About from './Pages/About'
 import Contact from './Pages/Contacts'
 import Displaysearchitem from './Components/Item_Section/Displaysearchitem'
-import InnerSearchNavigation from './Components/Innernavigations/InnerSearchNavigation'
 
 export default class App extends Component {
   static contextType = ShoppingCartContext;
-  state = {
-    data: [],
-    displayCart: false,
-    cart: {},
-    displayeye:{isvisible:false,eyedata:[]}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      displayCart: false,
+      cart: {},
+      displayeye:{isvisible:false,eyedata:[]}
+    };
+  }
   
   componentDidMount() {
     axios.get("http://localhost:3000/data.json").then((res) => {
@@ -140,7 +142,6 @@ export default class App extends Component {
         >
           <Header/>
           <Navigation />
-          <InnerSearchNavigation/>
           <Routes>
                  <Route exact path='/' element={<Displaysearchitem 
             data={this.state.data}
@@ -151,6 +152,7 @@ export default class App extends Component {
             />}></Route>
                  <Route exact path='/about' element={< About />}></Route>
                  <Route exact path='/contact' element={< Contact />}></Route>
+                 <Route exact path='/test' element={< Contact />}></Route>
                  <Route exact path='/product/:Id' element={<PageHandler getProduct={this.getProduct}/>}></Route>
           </Routes>
           <ProductCart/>
